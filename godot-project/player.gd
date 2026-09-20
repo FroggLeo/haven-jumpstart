@@ -5,9 +5,11 @@ const JUMP_VELOCITY = -350.0
 const JUMP_FLOAT_TIME = 0.1
 static var last_on_floor_timer := 0.0
 static var mails_collected := 0
+static var win := false
 
 func _ready():
 	$Camera2D.zoom = Vector2(3, 3)
+	%win.hide()
 
 func check_mail():
 	var mails = get_node("../mail:")
@@ -16,6 +18,15 @@ func check_mail():
 		mails.erase_cell(tile_pos)
 		mails_collected += 1
 		%Label.text = "Mail collected: " + str(mails_collected)
+
+func check_mailbox():
+	var mailbox = get_node("../mailbox:")
+	var tile_pos = mailbox.local_to_map(mailbox.to_local(global_position))
+	if mailbox.get_cell_source_id(tile_pos) != -1 && !win:
+		%Label.hide()
+		%win.text = "You have delivered your night mail!\nTotal mail delivered: " + str(mails_collected) + "/40"
+		%win.show()
+		win = true
 
 func _process(_delta):
 	if (get_viewport().get_visible_rect().size.x <= 854 || get_viewport().get_visible_rect().size.y <= 480):
@@ -46,3 +57,4 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	move_and_slide()
 	check_mail()
+	check_mailbox()
