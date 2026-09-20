@@ -9,7 +9,13 @@ static var mails_collected := 0
 func _ready():
 	$Camera2D.zoom = Vector2(3, 3)
 
-
+func check_mail():
+	var mails = get_node("../mail:")
+	var tile_pos = mails.local_to_map(mails.to_local(global_position))
+	if mails.get_cell_source_id(tile_pos) != -1:
+		mails.erase_cell(tile_pos)
+		mails_collected += 1
+		%Label.text = "Mail collected: " + str(mails_collected)
 
 func _process(_delta):
 	if (get_viewport().get_visible_rect().size.x <= 854 || get_viewport().get_visible_rect().size.y <= 480):
