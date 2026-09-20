@@ -10,5 +10,5 @@ https://froggleo.itch.io/night-mail
 
 
 
-!\[drooling...](godot-project/drool.png)
+![drooling...](godot-project/drool.png)
 
