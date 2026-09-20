@@ -9,12 +9,11 @@ static var win := false
 
 func _ready():
 	$Camera2D.zoom = Vector2(3, 3)
-	%win.hide()
 
 func check_mail():
 	var mails = get_node("../mail:")
 	var tile_pos = mails.local_to_map(mails.to_local(global_position))
-	if mails.get_cell_source_id(tile_pos) != -1:
+	if mails.get_cell_source_id(tile_pos) != -1 && !win:
 		mails.erase_cell(tile_pos)
 		mails_collected += 1
 		%Label.text = "Mail collected: " + str(mails_collected)

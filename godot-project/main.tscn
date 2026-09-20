@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://cqow47bch5ocs"]
+[gd_scene load_steps=25 format=4 uid="uid://cqow47bch5ocs"]
 
 [ext_resource type="Script" uid="uid://80kl10p8d3vr" path="res://player.gd" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://bdybujlfbagc7" path="res://drool.png" id="1_ig7tw"]
@@ -95,11 +95,9 @@ sources/0 = SubResource("TileSetAtlasSource_5vw27")
 size = Vector2(28, 28)
 
 [sub_resource type="LabelSettings" id="LabelSettings_lquwl"]
+font_size = 12
 
 [sub_resource type="LabelSettings" id="LabelSettings_7mycd"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_5vw27"]
-font_size = 26
 
 [node name="Node" type="Node"]
 
@@ -136,13 +134,26 @@ shape = SubResource("RectangleShape2D_ig7tw")
 
 [node name="Label" type="Label" parent="player/Camera2D"]
 unique_name_in_owner = true
-offset_left = -64.0
-offset_top = -56.0
-offset_right = 73.0
-offset_bottom = -33.0
+offset_left = -68.0
+offset_top = -42.0
+offset_right = 69.0
+offset_bottom = -19.0
 text = " Mail collected: 0"
 label_settings = SubResource("LabelSettings_lquwl")
+horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="win" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = 2160.0
+offset_top = -2736.0
+offset_right = 2477.0
+offset_bottom = -2713.0
+text = "You have delivered your night mail!
+Total mail delivered: 0/40"
+label_settings = SubResource("LabelSettings_7mycd")
+horizontal_alignment = 1
 
 [node name="objective" type="Label" parent="."]
 offset_left = -136.0
@@ -151,19 +162,3 @@ offset_right = 137.0
 offset_bottom = -105.0
 text = "OBJECTIVE: deliver the night mail to USPS"
 label_settings = SubResource("LabelSettings_7mycd")
-
-[node name="win" type="Label" parent="."]
-unique_name_in_owner = true
-anchors_preset = -1
-anchor_left = 1.9310001
-anchor_top = -4.235
-anchor_right = 1.9310001
-anchor_bottom = -4.235
-offset_left = -128.5122
-offset_top = -23.71997
-offset_right = 314.4878
-offset_bottom = 64.28003
-text = "You have delivered your night mail!
-Total mail delivered: 0/40"
-label_settings = SubResource("LabelSettings_5vw27")
-horizontal_alignment = 1
